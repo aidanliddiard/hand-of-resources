@@ -49,6 +49,13 @@ describe('backend-express-template routes', () => {
     expect(res.status).toEqual(200);
     expect(res.body.origin).toEqual('Japan and North America');
   });
+  it('/flowers/id should delete a flower', async () => {
+    const res = await request(app).delete('/flowers/2');
+    expect(res.status).toEqual(200);
+
+    const { body } = await request(app).get('/flowers/2');
+    expect(body).toEqual('');
+  });
   afterAll(() => {
     pool.end();
   });
