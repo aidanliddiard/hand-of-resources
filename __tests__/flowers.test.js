@@ -42,6 +42,13 @@ describe('backend-express-template routes', () => {
     expect(res.body.id).not.toBeUndefined();
     expect(res.body.name).toEqual('Gerber Daisy');
   });
+  it('/flowers/id should update flower details', async () => {
+    const res = await request(app).put('/flowers/3').send({
+      origin: 'Japan and North America',
+    });
+    expect(res.status).toEqual(200);
+    expect(res.body.origin).toEqual('Japan and North America');
+  });
   afterAll(() => {
     pool.end();
   });
