@@ -13,21 +13,25 @@ describe('backend-express-template routes', () => {
 
     expect(res.body).toEqual([
       {
-        id: '1',
         name: 'Calla lily',
-        origin: 'South Africa',
       },
       {
-        id: '2',
         name: 'Iris',
-        origin: 'Virginia',
       },
       {
-        id: '3',
         name: 'Hydrangea',
-        origin: 'Japan',
       },
     ]);
+  });
+  it('/flowers/id displays details about flower', async () => {
+    const res = await request(app).get('/flowers/3');
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({
+      id: '3',
+      name: 'Hydrangea',
+      origin: 'Japan',
+    });
   });
   afterAll(() => {
     pool.end();
