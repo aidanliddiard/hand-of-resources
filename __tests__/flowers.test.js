@@ -33,6 +33,15 @@ describe('backend-express-template routes', () => {
       origin: 'Japan',
     });
   });
+  it('/flowers should create a new flower', async () => {
+    const res = await request(app).post('/flowers').send({
+      name: 'Gerber Daisy',
+      origin: null,
+    });
+    expect(res.status).toEqual(200);
+    expect(res.body.id).not.toBeUndefined();
+    expect(res.body.name).toEqual('Gerber Daisy');
+  });
   afterAll(() => {
     pool.end();
   });
