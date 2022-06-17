@@ -48,6 +48,13 @@ describe('backend fruit routes', () => {
       origin: 'Asia, Europe, North America',
     });
   });
+  it('/fruits/id should delete a fruit', async () => {
+    const res = await request(app).delete('/fruits/3');
+    expect(res.status).toEqual(200);
+
+    const { body } = await request(app).get('/fruits/3');
+    expect(body).toEqual('');
+  });
   afterAll(() => {
     pool.end();
   });
