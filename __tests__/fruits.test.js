@@ -16,6 +16,16 @@ describe('backend fruit routes', () => {
       { name: 'Grapes' },
     ]);
   });
+  it('/fruits/id should display the details about a fruit', async () => {
+    const res = await request(app).get('/fruits/2');
+    expect(res.status).toEqual(200);
+    expect(res.body).toEqual({
+      id: '2',
+      name: 'Apple',
+      fav_pairing: 'Cheese',
+      origin: 'Kazakhstan',
+    });
+  });
   afterAll(() => {
     pool.end();
   });
