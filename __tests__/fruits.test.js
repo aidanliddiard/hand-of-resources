@@ -36,6 +36,18 @@ describe('backend fruit routes', () => {
     expect(res.body.id).not.toBeUndefined;
     expect(res.body.name).toEqual('Strawberry');
   });
+  it('/fruit/id should update a fruit', async () => {
+    const res = await request(app).put('/fruits/3').send({
+      name: 'Green Grapes',
+    });
+    expect(res.status).toEqual(200);
+    expect(res.body).toEqual({
+      id: '3',
+      name: 'Green Grapes',
+      fav_pairing: null,
+      origin: 'Asia, Europe, North America',
+    });
+  });
   afterAll(() => {
     pool.end();
   });
