@@ -26,6 +26,16 @@ describe('backend fruit routes', () => {
       origin: 'Kazakhstan',
     });
   });
+  it('/fruits should add a fruit', async () => {
+    const res = await request(app).post('/fruits').send({
+      name: 'Strawberry',
+      fav_pairing: 'Rhubarb',
+      origin: 'North America',
+    });
+    expect(res.status).toEqual(200);
+    expect(res.body.id).not.toBeUndefined;
+    expect(res.body.name).toEqual('Strawberry');
+  });
   afterAll(() => {
     pool.end();
   });
