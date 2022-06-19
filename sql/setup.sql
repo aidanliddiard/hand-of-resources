@@ -2,6 +2,7 @@
 -- The SQL in this file will be executed when you run `npm run setup-db`
 DROP TABLE IF EXISTS flowers;
 DROP TABLE IF EXISTS fruits;
+DROP TABLE IF EXISTS veggies;
 
 CREATE TABLE flowers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -14,6 +15,12 @@ CREATE TABLE fruits (
   name VARCHAR NOT NULL,
   fav_pairing VARCHAR,
   origin VARCHAR
+);
+
+CREATE TABLE veggies (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  type VARCHAR
 );
 
 INSERT INTO flowers (
@@ -29,5 +36,11 @@ INSERT INTO fruits (
   origin
 )
 
-VALUES ('Raspberry', 'Anything chocolate', NULL), ('Apple', 'Cheese', 'Kazakhstan'), ('Grapes', NULL, 'Asia, Europe, North America')
+VALUES ('Raspberry', 'Anything chocolate', NULL), ('Apple', 'Cheese', 'Kazakhstan'), ('Grapes', NULL, 'Asia, Europe, North America');
 
+INSERT INTO veggies (
+  name,
+  type
+)
+
+VALUES ('Cauliflower', 'Cruciferous'), ('Bell Pepper', NULL), ('Cucumber', 'Marrow'), ('Arrugalua', 'Leafy Green')
