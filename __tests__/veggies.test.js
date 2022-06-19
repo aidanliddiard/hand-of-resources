@@ -18,6 +18,16 @@ describe('tests for backend veggies routes', () => {
       { name: 'Arrugalua' },
     ]);
   });
+  it('veggies/id returns details about a veggie', async () => {
+    const res = await request(app).get('/veggies/3');
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({
+      id: '3',
+      name: 'Cucumber',
+      type: 'Marrow',
+    });
+  });
   afterAll(() => {
     pool.end();
   });
