@@ -28,6 +28,14 @@ describe('tests for backend veggies routes', () => {
       type: 'Marrow',
     });
   });
+  it('/veggies should insert a new veggie', async () => {
+    const res = await request(app)
+      .post('/veggies')
+      .send({ name: 'Spinach', type: 'Leafy Green' });
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({ id: '5', name: 'Spinach', type: 'Leafy Green' });
+  });
   afterAll(() => {
     pool.end();
   });
