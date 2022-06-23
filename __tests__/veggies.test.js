@@ -42,6 +42,13 @@ describe('tests for backend veggies routes', () => {
 
     expect(res.body).toEqual({ id: '4', name: 'Arugula', type: 'Leafy Green' });
   });
+  it('/id should delete the veggie', async () => {
+    const res = await request(app).delete('/veggies/3');
+    expect(res.status).toEqual(200);
+
+    const { body } = await request(app).get('/veggies/3');
+    expect(body).toEqual('');
+  });
   afterAll(() => {
     pool.end();
   });
