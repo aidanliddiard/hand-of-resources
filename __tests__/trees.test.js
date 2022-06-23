@@ -27,6 +27,14 @@ describe('backend tree routes', () => {
       evergreen: false,
     });
   });
+  it('/trees should insert a tree', async () => {
+    const res = await request(app)
+      .post('/trees')
+      .send({ name: 'Spruce', evergreen: true });
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({ id: '4', name: 'Spruce', evergreen: true });
+  });
   afterAll(() => {
     pool.end();
   });
