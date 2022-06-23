@@ -17,7 +17,17 @@ describe('backend tree routes', () => {
       { name: 'Birch' },
     ]);
   });
-  afterEach(() => {
+  it('/trees/id should return the details of a tree', async () => {
+    const res = await request(app).get('/trees/1');
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Dogwood',
+      evergreen: false,
+    });
+  });
+  afterAll(() => {
     pool.end();
   });
 });
