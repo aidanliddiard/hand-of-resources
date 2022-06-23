@@ -36,6 +36,12 @@ describe('tests for backend veggies routes', () => {
 
     expect(res.body).toEqual({ id: '5', name: 'Spinach', type: 'Leafy Green' });
   });
+  it('/veggies/id should update a veggie', async () => {
+    const res = await request(app).put('/veggies/4').send({ name: 'Arugula' });
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({ id: '4', name: 'Arugula', type: 'Leafy Green' });
+  });
   afterAll(() => {
     pool.end();
   });
