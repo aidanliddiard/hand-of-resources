@@ -35,6 +35,12 @@ describe('backend tree routes', () => {
 
     expect(res.body).toEqual({ id: '4', name: 'Spruce', evergreen: true });
   });
+  it('/trees/id should edit a tree', async () => {
+    const res = await request(app).put('/trees/1').send({ name: 'Magnolia' });
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({ id: '1', name: 'Magnolia', evergreen: false });
+  });
   afterAll(() => {
     pool.end();
   });
