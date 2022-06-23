@@ -3,6 +3,7 @@
 DROP TABLE IF EXISTS flowers;
 DROP TABLE IF EXISTS fruits;
 DROP TABLE IF EXISTS veggies;
+DROP TABLE IF EXISTS trees;
 
 CREATE TABLE flowers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -21,6 +22,12 @@ CREATE TABLE veggies (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name VARCHAR NOT NULL,
   type VARCHAR
+);
+
+CREATE TABLE trees (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  evergreen BOOLEAN
 );
 
 INSERT INTO flowers (
@@ -43,4 +50,11 @@ INSERT INTO veggies (
   type
 )
 
-VALUES ('Cauliflower', 'Cruciferous'), ('Bell Pepper', NULL), ('Cucumber', 'Marrow'), ('Arrugalua', 'Leafy Green')
+VALUES ('Cauliflower', 'Cruciferous'), ('Bell Pepper', NULL), ('Cucumber', 'Marrow'), ('Arrugalua', 'Leafy Green');
+
+INSERT INTO trees (
+  name,
+  evergreen
+)
+
+VALUES ('Dogwood', false), ('Redwood', true), ('Birch', false) 
