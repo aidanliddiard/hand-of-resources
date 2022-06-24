@@ -42,6 +42,13 @@ describe('backend routes for fungi', () => {
 
     expect(res.body).toEqual({ id: '1', name: 'Morel', poisonous: false });
   });
+  it('/fungi/id should delete the fungus', async () => {
+    const res = await request(app).delete('/fungi/2');
+    expect(res.status).toEqual(200);
+
+    const { body } = await request(app).get('/fungi/2');
+    expect(body).toEqual('');
+  });
   afterAll(() => {
     pool.end();
   });
