@@ -41,6 +41,13 @@ describe('backend tree routes', () => {
 
     expect(res.body).toEqual({ id: '1', name: 'Magnolia', evergreen: false });
   });
+  it('/trees/id should delete tree', async () => {
+    const res = await request(app).delete('/trees/3');
+    expect(res.status).toEqual(200);
+
+    const { body } = await request(app).get('/trees/3');
+    expect(body).toEqual('');
+  });
   afterAll(() => {
     pool.end();
   });
