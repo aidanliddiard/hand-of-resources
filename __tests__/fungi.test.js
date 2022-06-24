@@ -17,6 +17,16 @@ describe('backend routes for fungi', () => {
       { name: 'Webcaps' },
     ]);
   });
+  it('/fungi/id should return details about a fungus', async () => {
+    const res = await request(app).get('/fungi/1');
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({
+      id: '1',
+      name: 'Morrel',
+      poisonous: false,
+    });
+  });
   afterAll(() => {
     pool.end();
   });
