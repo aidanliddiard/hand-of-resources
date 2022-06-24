@@ -36,6 +36,12 @@ describe('backend routes for fungi', () => {
     expect(res.body.id).not.toBeUndefined();
     expect(res.body.name).toEqual('Portobello');
   });
+  it('/fungi/id should update the fungus', async () => {
+    const res = await request(app).put('/fungi/1').send({ name: 'Morel' });
+    expect(res.status).toEqual(200);
+
+    expect(res.body).toEqual({ id: '1', name: 'Morel', poisonous: false });
+  });
   afterAll(() => {
     pool.end();
   });
