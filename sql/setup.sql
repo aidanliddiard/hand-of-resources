@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS flowers;
 DROP TABLE IF EXISTS fruits;
 DROP TABLE IF EXISTS veggies;
 DROP TABLE IF EXISTS trees;
+DROP TABLE IF EXISTS fungi;
 
 CREATE TABLE flowers (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -28,6 +29,12 @@ CREATE TABLE trees (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name VARCHAR NOT NULL,
   evergreen BOOLEAN
+);
+
+CREATE TABLE fungi (
+  id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  poisonous BOOLEAN
 );
 
 INSERT INTO flowers (
@@ -57,4 +64,11 @@ INSERT INTO trees (
   evergreen
 )
 
-VALUES ('Dogwood', false), ('Redwood', true), ('Birch', false) 
+VALUES ('Dogwood', false), ('Redwood', true), ('Birch', false);
+
+INSERT INTO fungi (
+  name,
+  poisonous
+)
+
+VALUES ('Morrel', false), ('Lions Mane', false), ('Webcaps', true);
