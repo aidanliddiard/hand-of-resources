@@ -27,6 +27,15 @@ describe('backend routes for fungi', () => {
       poisonous: false,
     });
   });
+  it('/fungi should add a new fungus', async () => {
+    const res = await request(app)
+      .post('/fungi')
+      .send({ name: 'Portobello', poisonous: false });
+    expect(res.status).toEqual(200);
+
+    expect(res.body.id).not.toBeUndefined();
+    expect(res.body.name).toEqual('Portobello');
+  });
   afterAll(() => {
     pool.end();
   });
